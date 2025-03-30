@@ -37,6 +37,21 @@ const Maze: React.FC = () => {
     const stack: Position[] = [];
     const startPos: Position = { x: 0, y: 0 };
 
+    useEffect(() => {
+      const preventScroll = (e: KeyboardEvent) => {
+        if (["ArrowUp", "ArrowDown", "w", "s"].includes(e.key)) {
+          e.preventDefault();
+        }
+      };
+
+      window.addEventListener("keydown", preventScroll, { passive: false });
+
+      return () => {
+        window.removeEventListener("keydown", preventScroll);
+      };
+    }, []);
+
+
     const visit = (pos: Position) => {
       newMaze[pos.y][pos.x].visited = true;
       stack.push(pos);
@@ -100,7 +115,7 @@ const Maze: React.FC = () => {
 
   const handleKeyDown = (e: KeyboardEvent) => {
     if (gameWon) return;
-
+    e.preventDefault();
     const currentCell = maze[playerPos.y][playerPos.x];
     let newPos = { ...playerPos };
 
