@@ -99,25 +99,25 @@ const Maze: React.FC = () => {
   };
 
   const handleKeyDown = (e: KeyboardEvent) => {
-    e.preventDefault();
+
     if (gameWon) return;
 
     const currentCell = maze[playerPos.y][playerPos.x];
     let newPos = { ...playerPos };
 
     switch (e.key) {
-      case 'ArrowUp':
-        if (!currentCell.top) newPos.y--;
-        break;
-      case 'ArrowRight':
-        if (!currentCell.right) newPos.x++;
-        break;
-      case 'ArrowDown':
-        if (!currentCell.bottom) newPos.y++;
-        break;
-      case 'ArrowLeft':
-        if (!currentCell.left) newPos.x--;
-        break;
+      // case 'ArrowUp':
+      //   if (!currentCell.top) newPos.y--;
+      //   break;
+      // case 'ArrowRight':
+      //   if (!currentCell.right) newPos.x++;
+      //   break;
+      // case 'ArrowDown':
+      //   if (!currentCell.bottom) newPos.y++;
+      //   break;
+      // case 'ArrowLeft':
+      //   if (!currentCell.left) newPos.x--;
+      //   break;
       case 'w':
         if (!currentCell.top) newPos.y--;
         break;
@@ -201,28 +201,28 @@ const Maze: React.FC = () => {
         <div className="grid grid-cols-3 gap-2">
           <div />
           <button
-            onClick={() => handleKeyDown({ key: 'ArrowUp' } as KeyboardEvent)}
+            onClick={() => handleKeyDown({ key: 'w' } as KeyboardEvent)}
             className="p-2 bg-gray-200 rounded hover:bg-gray-300"
           >
             <ArrowUp />
           </button>
           <div />
           <button
-            onClick={() => handleKeyDown({ key: 'ArrowLeft' } as KeyboardEvent)}
+            onClick={() => handleKeyDown({ key: 'a' } as KeyboardEvent)}
             className="p-2 bg-gray-200 rounded hover:bg-gray-300"
           >
             <ArrowLeft />
           </button>
           <div />
           <button
-            onClick={() => handleKeyDown({ key: 'ArrowRight' } as KeyboardEvent)}
+            onClick={() => handleKeyDown({ key: 'd' } as KeyboardEvent)}
             className="p-2 bg-gray-200 rounded hover:bg-gray-300"
           >
             <ArrowRight />
           </button>
           <div />
           <button
-            onClick={() => handleKeyDown({ key: 'ArrowDown' } as KeyboardEvent)}
+            onClick={() => handleKeyDown({ key: 's' } as KeyboardEvent)}
             className="p-2 bg-gray-200 rounded hover:bg-gray-300"
           >
             <ArrowDown />
